@@ -1,5 +1,43 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <script>
-    
+    function mostrarTablaUsuarios(){
+        google.script.run.withSuccessHandler((obj)=>{
+            document.getElementById('mostrar').textContent = "Actualizar";
+            
+            let tabla = document.getElementById('idTablaUsuarios');
+            if (tabla) {
+                tabla.remove()
+            }
+            tabla = document.createElement('table');
+            tabla.id = 'idTablaUsuarios'
+            let tablaHeader = document.createElement('thead')
+            let tablaBody = document.createElement('tbody');
+
+            Array.from(obj).forEach((filaActual, i) => {
+                 let fila = document.createElement('tr');
+                 filaActual.forEach((celdaActual)=>{
+                    let celda = document.createElement('td');
+                    celda.textContent = celdaActual;
+                    fila.appendChild(celda);
+                 });
+                 if (i == 0) {
+                    tablaHeader.appendChild(fila);
+                    tabla.appendChild(tablaHeader);
+                 }else{
+                    tablaBody.appendChild(fila);
+                 }
+               
+            });
+            //clases a cabezera 
+            tablaHeader.classList.add('table-light')
+            //agregamos cuerpo a tabla usuario
+            tabla.appendChild(tablaBody);
+            //agregamos stilos
+            tabla.classList.add('table','table-striped','table-dark','border','border-3');
+            //agregamos tabla a pagina
+            document.getElementById('divUsuarios').appendChild(tabla);
+
+        }).obtenerUsuarios();
+    }
 </script>
