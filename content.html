@@ -1,11 +1,68 @@
 <main>
-  <!-- botones de accion -->
-  <div class="d-flex justify-content-center mb-4">
-    <button class="btn btn-success m-3" onclick="mostrarTablaUsuarios()" id="mostrar">mostrar usuarios</button>
+
+  <div class="d-flex justify-content-center my-3">
+    <!-- botones -->
+    <button type="button" class="btn btn-success m-2" onclick="mostrarTablaUsuarios()"> mostrar usuarios </button>
+    
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#crearUsuarioModal">
+  nuevo usuario
+</button>
 
   </div>
   <!-- tabla de usuarios -->
-  <div id="divUsuarios" class="container-sm mb-4 w-50">
+  <div id="divUsuarios" class="container-lg mb-4 w-50">
 
   </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="crearUsuarioModal" tabindex="-1" aria-labelledby="tituloCrearUsuarioModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tituloCrearUsuarioModal">insertar usuario</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+         <!-- formulario -->
+         <form id="formulario" onsubmit="insertarUsuario()" method="dialog">
+      <div class="modal-body">
+        
+        
+          <div class="mb-3">
+            <label class="form-label" for="correo">correo</label>
+            <input class="form-control" type="text" name="correo" id="correo" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="nombre">nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="tipo">tipo</label>
+            <input class="form-control" type="text" name="tipo" id="tipo" value="USER" disabled>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="turno">turno</label>
+            <input class="form-control" type="text" name="turno" id="turno" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="contrasena">contraseña</label>
+            <input class="form-control" type="text" name="contrasena" id="contrasena" required>
+          </div>
+
+       
+
+      </div>
+      <div class="modal-footer">
+      </form>
+
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-success">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main>
+
